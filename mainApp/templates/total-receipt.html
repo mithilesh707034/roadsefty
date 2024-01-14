@@ -65,9 +65,12 @@
                     </button>
 
                     <!-- App Search-->
-                    <form class="app-search d-none d-lg-block ">
-                        <div class="position-relative ">
-                            <input type="text" class="form-control" placeholder="Search...">
+                    <form class="app-search d-none d-lg-block " method="post">
+                        {%csrf_token%}
+                        <div class="position-relative d-flex">
+                            <input type="date"name="from_date" class="form-control" style="width:200px !important" required>
+                            <input type="date"name="to_date" class="form-control" style="width:200px !important" required>
+                            <button type="submit" class="btn btn-primary p-1 " >Search</button>
                             <span class="bx bx-search-alt"></span>
                         </div>
                     </form>
@@ -199,7 +202,7 @@
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium text-center"> Today's Total</p>
+                                                    <p class="text-muted fw-medium text-center"> Total</p>
                                                     <h4 class="mb-0 text-center">{{tt}}</h4>
                                                 </div>
 

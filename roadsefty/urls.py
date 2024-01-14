@@ -21,6 +21,7 @@ urlpatterns = [
     path('receipt-page/',views.receipt_page),
     path('add-receipt/',views.add_receipt),
     path('receipt/',views.receipt_page),
-    
+    path('delete-receipt/<int:id>/',views.delete_receipt),
+    path('total-receipt/',views.total_receipt),
 
 ]

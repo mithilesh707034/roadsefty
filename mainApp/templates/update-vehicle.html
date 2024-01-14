@@ -19,10 +19,16 @@
                             <form method="post" enctype="multipart/form-data">
                                 {%csrf_token%}
                                 <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Vehicle Name</label>
-                                    <input type="text" class="form-control" id="colorpicker-default"placeholder="Enter Name"name="name" value="{{data.name}}">
+                                    <input type="text" class="form-control" placeholder="Enter Name"name="name" value="{{data.name}}">
+                                </div> 
+                                 </div>
+                                 <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Price</label>
+                                    <input type="number" class="form-control" placeholder="Enter Price"name="price" value="{{data.price}}">
                                 </div> 
                                  </div>
                             
