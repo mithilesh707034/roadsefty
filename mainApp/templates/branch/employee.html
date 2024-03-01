@@ -1,4 +1,4 @@
-{% extends 'admin-index.html' %}
+{% extends 'branch/branch-index.html' %}
 {% load static %}
 {%block body%}
 
@@ -6,19 +6,18 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4 text-center">Total Vehicle<span><a href="/add-vehicle"> &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+                            <h4 class="card-title mb-4 text-center">Total Employee<span><a href="/add-employee"> &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
                             </span></h4>
                             <div class="table-responsive">
                                 <table class="table align-middle table-nowrap mb-0">
                                     <thead class="table-light">
                                         <tr>
-                                            
-                                            
                                             <th class="align-middle">Name</th>
-                                            <th>Edit</th>
-                                            {%if Request.user.username == "admin@gmail.com"%}
-                                                    <th class="align-middle">Delete</th>
-                                                    {%endif%}
+                                            <th class="align-middle">Email</th>
+                                            <th class="align-middle">Password</th>
+                                            <th class="align-middle">Address</th> 
+                                            <th class="align-middle">Today's Total</th>                                            <th>Edit</th>
+                                            <th>Delete</th>
                                             
                                         </tr>
                                     </thead>
@@ -28,21 +27,32 @@
                                             <td>
                                                 {{item.name}}
                                             </td>
-                                           
+                                            <td>
+                                                {{item.email}}
+                                            </td>
+                                            <td>
+                                                {{item.password}}
+                                            </td>
                                             
                                             <td>
-                                                <a href="/update-vehicle/{{item.id}}"><i class="fa fa-edit"></i></a>
+                                                {{item.address}}
                                             </td>
-                                            {%if Request.user.username == "admin@gmail.com"%}
-                                                    <td>
-                                                        <a href="#" onclick="confirmDelete('{{item.id}}')"><i class="fa fa-trash text-danger"></i></a>
-                                                    </td>
-                                                    {% endif %}
+                                            <td class="text-center">
+                                                <a href="/filter-employee-data/{{item.email}}"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                            <td>
+                                                <a href="/update-employee/{{item.id}}"><i class="fa fa-edit"></i></a>
+                                            </td>
+                                            <td>
+                                                <a href="#" onclick="confirmDelete('{{item.id}}')">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </td>
                                             
                                             <script>
                                                 function confirmDelete(itemId) {
                                                     if (confirm("Are you sure you want to delete this item?")) {
-                                                        window.location.href = "/delete-vehicle/" + itemId;
+                                                        window.location.href = "/delete-employee/" + itemId;
                                                     } else {
                                                         return false;
                                                     }

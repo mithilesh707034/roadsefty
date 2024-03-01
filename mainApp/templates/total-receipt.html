@@ -313,7 +313,9 @@
                                                     <th class="align-middle">Amount</th>
                                                     <th class="align-middle">Shift</th>
                                                     <th class="align-middle">Date</th>
+                                                    {%if request.user.username == "admin@gmail.com"%}
                                                     <th class="align-middle">Delete</th>
+                                                    {%endif%}
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -334,9 +336,11 @@
                                                     <td>
                                                         {{item.date}}
                                                     </td>
+                                                    {%if request.user.username == "admin@gmail.com"%}
                                                     <td>
                                                         <a href="#" onclick="confirmDelete('{{item.id}}')"><i class="fa fa-trash text-danger"></i></a>
                                                     </td>
+                                                    {% endif %}
                                                     <script>
                                                         function confirmDelete(id){
                                                             if(confirm("Are You Sure?")){

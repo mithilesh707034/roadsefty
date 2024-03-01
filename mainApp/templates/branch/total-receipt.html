@@ -1,11 +1,9 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8" />
-    <title>Admin Dashboard </title>
+    <title>Branch Dashboard </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Webcreative" name="author" />
@@ -26,21 +24,17 @@
 </head>
 
 <body data-sidebar="dark" data-layout-mode="light">
-
     <!-- <body data-layout="horizontal" data-topbar="dark"> -->
 
     <!-- Begin page -->
-
     <div id="layout-wrapper">
-
-
         <header id="page-topbar">
             <div class="navbar-header">
                 <div class="d-flex">
 
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="/admin-home" class="logo logo-dark">
+                        <a href="/branch-home" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{%static 'ngo-logo2.png'%}" alt="" height="22">
                             </span>
@@ -49,7 +43,7 @@
                             </span>
                         </a>
 
-                        <a href="/admin-home" class="logo logo-light">
+                        <a href="/branch-home" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="{%static 'ngo-logo2.png'%}" alt="" height="22">
                             </span>
@@ -65,9 +59,12 @@
                     </button>
 
                     <!-- App Search-->
-                    <form class="app-search d-none d-lg-block ">
-                        <div class="position-relative ">
-                            <input type="text" class="form-control" placeholder="Search...">
+                    <form class="app-search d-none d-lg-block " method="post">
+                        {%csrf_token%}
+                        <div class="position-relative d-flex">
+                            <input type="date"name="from_date" class="form-control" style="width:200px !important" required>
+                            <input type="date"name="to_date" class="form-control" style="width:200px !important" required>
+                            <button type="submit" class="btn btn-primary p-1 " >Search</button>
                             <span class="bx bx-search-alt"></span>
                         </div>
                     </form>
@@ -149,24 +146,20 @@
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li class="menu-title" key="t-menu">Menu</li>
                         <li>
-                            <a href="/admin-home">
+                            <a href="/branch-home">
                                 <i class="bx bx-home"></i>
                                 Home
                             </a>
                         </li>
-                        <li><a href="/vehicle">Vehicle</a></li>
-                        <li><a href="/total-receipt">Total Receipt</a></li>
-                         <li><a href="/branch">Branch</a></li>
-                        
-                        
+                        <li><a href="/branch-total-receipt">Total Receipt</a></li>
+                        <li><a href="/employee">Employee</a></li>
+
                     </ul>
                 </div>
                 <!-- Sidebar -->
             </div>
         </div>
         <!-- Left Sidebar End -->
-       
-
         <div class="main-content">
 
             <div class="page-content">
@@ -200,7 +193,7 @@
                                         <div class="card-body">
                                             <div class="d-flex">
                                                 <div class="flex-grow-1">
-                                                    <p class="text-muted fw-medium text-center"> Today's Total</p>
+                                                    <p class="text-muted fw-medium text-center"> Total</p>
                                                     <h4 class="mb-0 text-center">{{tt}}</h4>
                                                 </div>
 
@@ -300,7 +293,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title mb-4 text-center">Total Receipt<span><a href="/add-receipt"> &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    <h4 class="card-title mb-4 text-center">Total Receipt<span><a href="/add-branch-receipt"> &nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
                                     </span></h4>
                                     <div class="table-responsive">
                                         <table class="table align-middle table-nowrap mb-0">
